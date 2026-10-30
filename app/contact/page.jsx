@@ -1,0 +1,5 @@
+'use client';
+import {useState} from 'react';import {CLINIC as C} from '@/lib/data';import {Head} from '@/components/Ui';
+export default function Contact(){const [ok,s]=useState(false);const [e,setE]=useState('');
+const sub=ev=>{ev.preventDefault();const f=new FormData(ev.target);if(!f.get('n').trim()||!/^\S+@\S+\.\S+$/.test(f.get('e'))||!f.get('m').trim())return setE('Please complete all fields with a valid email.');setE('');s(true)};
+return <><Head e="Contact" t="Visit or Write to Us"/><section className="sec"><div className="w grid g2"><div><p><b>Address</b><br/>{C.addr}</p><p><b>Phone</b><br/>{C.phone}</p><p><b>Email</b><br/>{C.email}</p><p><b>Hours</b><br/>{C.hours}</p><div className="card pad mut">Google Maps embed placeholder.</div></div><form onSubmit={sub} noValidate><label htmlFor="n">Name</label><input id="n" name="n"/><label htmlFor="e">Email</label><input id="e" name="e" type="email"/><label htmlFor="m">Message</label><textarea id="m" name="m" rows="4"/><div className="err">{e}</div><p><button className="btn">Send Message</button></p>{ok&&<div className="note" role="status">Thank you. Demo only: nothing is sent.</div>}</form></div></section></>}

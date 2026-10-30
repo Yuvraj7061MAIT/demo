@@ -1,0 +1,9 @@
+import Link from 'next/link';
+const hue=['#C5A880','#A8AA9A','#b39a7a','#8f9482','#d2b894','#9c8f7e'];
+export const Ph=({t,i=0})=><div className="ph" role="img" aria-label={`${t} placeholder`} style={{background:`linear-gradient(135deg,${hue[i%6]},${hue[(i+2)%6]})`}}>{t[0]}<small>Demo image</small></div>;
+export const TCard=({t,i})=><div className="card"><Ph t={t.name} i={i}/><div className="pad"><h3>{t.name}</h3><p className="mut">{t.desc}</p><Link href={`/treatments/${t.slug}`}>Learn more →</Link></div></div>;
+export const DCard=({d})=><div className="card"><Ph t={d.name.split(' ')[1]} i={+d.id}/><div className="pad"><h3>{d.name}</h3><p className="mut">{d.qual}<br/>{d.spec}<br/>{d.exp}</p><Link className="btn o s" href={`/doctors/${d.id}`}>View Profile</Link></div></div>;
+export const ACard=({a,i})=><div className="card"><Ph t={a.title} i={i+1}/><div className="pad"><div className="eyebrow">{a.cat}</div><h3><Link href={`/journal/${a.slug}`} style={{textDecoration:'none'}}>{a.title}</Link></h3><div className="mut">{a.date} · {a.read} read</div></div></div>;
+export const Head=({e,t,p})=><section className="sec alt"><div className="w"><div className="eyebrow">{e}</div><h1>{t}</h1><p className="mut">{p}</p></div></section>;
+export const Cta=({h='Begin Your Skin Journey With Us.'})=><section className="sec" style={{background:'var(--ink)',color:'var(--bg)',textAlign:'center'}}><div className="w"><h2>{h}</h2><Link className="btn" style={{background:'var(--gold)',color:'#292725'}} href="/book">Schedule Your Consultation</Link></div></section>;
+export const Notice=()=><div className="note">Demo notice: suitability and outcomes vary and require consultation with a qualified medical professional. No outcome is guaranteed. All content is placeholder text pending clinical review.</div>;

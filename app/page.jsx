@@ -1,0 +1,7 @@
+import Link from 'next/link';import {T,D,A} from '@/lib/data';import {Ph,TCard,DCard,ACard,Cta} from '@/components/Ui';
+export default function Home(){return <>
+<section className="hero"><div className="w"><div className="eyebrow">South Delhi · Gurugram</div><h1 style={{maxWidth:720}}>Where Science Meets the Art of Beautiful Skin.</h1><p style={{maxWidth:520}}>Personalised dermatology and aesthetic treatments designed around your skin, your goals and your confidence.</p><Link className="btn" href="/treatments">Explore Treatments</Link> <Link className="btn o" href="/book">Book a Consultation</Link><p style={{fontSize:13}}>Personalised Care | Expert Dermatology | Advanced Technology (placeholder claims)</p></div></section>
+<section className="sec"><div className="w grid g2"><Ph t="Consultation"/><div><h2>Your Skin Deserves Thoughtful Care.</h2><p>Every plan starts with listening, a medical assessment and honest expectations.</p></div></div></section>
+<section className="sec alt"><div className="w"><h2>Featured Treatments</h2><div className="grid g3">{[0,1,2,4,7,9].map(i=><TCard key={i} t={T[i]} i={i}/>)}</div></div></section>
+<section className="sec"><div className="w"><h2>Meet Our Doctors</h2><div className="grid g3">{D.map(d=><DCard key={d.id} d={d}/>)}</div></div></section>
+<section className="sec alt"><div className="w"><h2>From the Journal</h2><div className="grid g3">{A.slice(0,3).map((a,i)=><ACard key={a.slug} a={a} i={i}/>)}</div></div></section><Cta/></>}

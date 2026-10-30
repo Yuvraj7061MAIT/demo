@@ -1,0 +1,4 @@
+import Link from 'next/link';import {notFound} from 'next/navigation';import {D} from '@/lib/data';import {Ph} from '@/components/Ui';
+export const generateStaticParams=()=>D.map(d=>({id:d.id}));
+export default async function Doc({params}){const {id}=await params;const d=D.find(x=>x.id===id);if(!d)notFound();
+return <><section className="sec alt"><div className="w grid g2"><Ph t={d.name.split(' ')[1]} i={+d.id}/><div><div className="eyebrow">{d.spec}</div><h1>{d.name}</h1><p className="mut">{d.qual}<br/>{d.reg}<br/>Experience: {d.exp}</p><Link className="btn" href={`/book?doctor=${d.id}`}>Book Appointment</Link></div></div></section><section className="sec"><div className="w" style={{maxWidth:720}}><h3>Biography</h3><p>{d.bio}</p><h3>Availability</h3><p>{d.avail}</p><div className="note">All details are placeholders.</div></div></section></>}
